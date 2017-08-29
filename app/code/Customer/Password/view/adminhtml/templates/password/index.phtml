@@ -1,0 +1,113 @@
+	<div id="page-wrap">
+
+		<div id="contact-area">
+			
+			<form method="post" action="<?php echo $block->getBaseUrl();?>admin/changepassword/password/save" onsubmit="return myFunction()">
+			<input name="form_key" type="hidden" value="<?php echo $block->updateCancelTime() ?>" />
+
+				<label for="Name">Customer Email:</label>
+				<input type="email" name="customer_email" id="customer_email" autocomplete="off" value=""/>
+				
+				<label for="password">Password:</label>
+				<input type="password" name="password" id="password" autocomplete="off" value=""/>
+	
+				<label for="cpassword">Confirm Password:</label>
+				<input type="password" name="cpassword" id="cpassword" autocomplete="off" value=""/>
+
+				<input type="submit" name="submit" value="Submit" class="submit-button" />
+			</form>
+			
+			<div style="clear: both;"></div>
+		
+		</div>
+	
+	</div>
+	<script>
+		function myFunction() {
+		    var pass1 = document.getElementById("password").value;
+		    var pass2 = document.getElementById("cpassword").value;
+		    var customer_email = document.getElementById("customer_email").value;
+		    var ok = true;
+		    if(customer_email==''){
+		    		document.getElementById("customer_email").style.borderColor = "#E34234";
+		    		ok = false;
+		    }else{
+		    	document.getElementById("customer_email").style.borderColor = "#cccccc";
+		    		ok = true;
+		    }
+		    if(pass1==''){
+		    		document.getElementById("password").style.borderColor = "#E34234";
+		    		ok = false;
+		    }else{
+		    	document.getElementById("password").style.borderColor = "#cccccc";
+		    	ok = true;
+		    }
+		    if(pass2==''){
+		    		document.getElementById("cpassword").style.borderColor = "#E34234";
+		    		ok = false;
+		    }else{
+		    	    document.getElementById("cpassword").style.borderColor = "#cccccc";
+		    		ok = true;
+		    }
+		    if (pass1 != pass2) {
+		        //alert("Passwords Do not match");
+		        document.getElementById("password").style.borderColor = "#E34234";
+		        document.getElementById("cpassword").style.borderColor = "#E34234";
+		        ok = false;
+		        alert('Password are not matched..');
+		    }
+		    else {
+		        //alert("Passwords Match!!!");
+		    }
+		    return ok;
+	}
+
+	</script>
+
+	<style>
+		#page-wrap {
+	width: 960px;
+	background: white;
+	padding: 20px 50px 20px 50px;
+	margin: 20px auto;
+	min-height: 500px;
+	height: auto !important;
+	height: 500px;
+}
+
+#contact-area {
+	width: 650px;
+	margin-top: 25px;
+}
+
+#contact-area input, #contact-area textarea,#contact-area select {
+	padding: 5px;
+	width: 437px;
+	font-family: Helvetica, sans-serif;
+	font-size: 1.4em;
+	margin: 0px 0px 10px 0px;
+	border: 2px solid #ccc;
+}
+
+#contact-area textarea {
+	height: 90px;
+}
+
+#contact-area textarea:focus, #contact-area input:focus {
+	border: 2px solid #900;
+}
+
+#contact-area input.submit-button {
+	width: 100px;
+	float: right;
+}
+
+label {
+	float: left;
+	text-align: right;
+	margin-right: 15px;
+	width: 193px;
+	padding-top: 5px;
+	font-size: 1.4em;
+}
+	</style>
